@@ -15,13 +15,13 @@ async def upload_image(file: UploadFile = File(...)):
         shutil.copyfileobj(file.file, buffer)
         class_name, percent = m.recognizaion(file.filename)
     if class_name == 0:
-        result = "White"
+        result = "Colorless"
         print(class_name)
     elif class_name == 1:
         print(class_name)
-        result = "yellow"
+        result = "Pale yellow"
     elif class_name == 2:
         print(class_name)
-        result = "dark yellow"
+        result = "Dark brown"
     return {"percent": percent,
             "result": result}
