@@ -11,7 +11,7 @@ async def root():
 @app.post("/upload_image/")
 async def upload_image(file: UploadFile = File(...)):
     result = ""
-    with open("app/saved_image/"+file.filename, "wb") as buffer:
+    with open("saved_image/"+file.filename, "wb") as buffer:
         shutil.copyfileobj(file.file, buffer)
         class_name, percent = model.recognizaion(file.filename)
     if class_name == 0:
