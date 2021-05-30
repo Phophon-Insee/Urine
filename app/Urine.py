@@ -1,6 +1,6 @@
 from fastapi import FastAPI, UploadFile, File
 import shutil
-import app.model as m
+import model
 
 app = FastAPI()
 
@@ -13,7 +13,7 @@ async def upload_image(file: UploadFile = File(...)):
     result = ""
     with open("app/saved_image/"+file.filename, "wb") as buffer:
         shutil.copyfileobj(file.file, buffer)
-        class_name, percent = m.recognizaion(file.filename)
+        class_name, percent = model.recognizaion(file.filename)
     if class_name == 0:
         result = "White"
         print(class_name)
