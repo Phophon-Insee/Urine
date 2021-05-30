@@ -8,7 +8,7 @@ app = FastAPI()
 async def root():
     return {"message": "Hello"}
 
-@app.post("app/upload_image/")
+@app.post("/upload_image/")
 async def upload_image(file: UploadFile = File(...)):
     result = ""
     with open("app/saved_image/"+file.filename, "wb") as buffer:
